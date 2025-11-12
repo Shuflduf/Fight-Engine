@@ -17,11 +17,5 @@ func _physics_process(delta: float) -> void:
     var direction := Vector3(input_dir.x, 0, input_dir.y).rotated(Vector3.UP, $CameraSystem.rotation.y)
     velocity.x = lerp(velocity.x, direction.x * SPEED, GROUND_ACCEL)
     velocity.z = lerp(velocity.z, direction.z * SPEED, GROUND_ACCEL)
-    #if direction:
-        #velocity.x = direction.x * SPEED
-        #velocity.z = direction.z * SPEED
-    #else:
-        #velocity.x = move_toward(velocity.x, 0, SPEED)
-        #velocity.z = move_toward(velocity.z, 0, SPEED)
 
     move_and_slide()
