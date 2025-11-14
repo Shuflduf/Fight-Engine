@@ -1,6 +1,5 @@
 extends CharacterBody3D
 
-@onready var landing_indicator: MeshInstance3D = $LandingIndicator
 
 const SPEED = 8.0
 const JUMP_VELOCITY = 7.0
@@ -13,8 +12,7 @@ const AIR_ACCEL = 0.01
 func _physics_process(delta: float) -> void:
     if not is_on_floor():
         velocity += get_gravity() * delta
-    else:
-        landing_indicator.update()
+
 
     if Input.is_action_just_pressed("jump") and is_on_floor():
         velocity.y = JUMP_VELOCITY
