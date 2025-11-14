@@ -1,11 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://cmcok53rej5sy"]
+[gd_scene load_steps=7 format=3 uid="uid://cmcok53rej5sy"]
 
 [ext_resource type="Script" uid="uid://b8c82e4n8cldl" path="res://player.gd" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://chmr6w7f8yykk" path="res://camera_system.gd" id="2_onrkg"]
+[ext_resource type="Script" uid="uid://q7ybcgt88ktg" path="res://landing_indicator.gd" id="3_i3pqv"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_4flbx"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_4flbx"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_onrkg"]
+height = 0.1
 
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_4flbx")
@@ -21,3 +25,8 @@ script = ExtResource("2_onrkg")
 
 [node name="Camera3D" type="Camera3D" parent="CameraSystem"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
+
+[node name="LandingIndicator" type="MeshInstance3D" parent="."]
+top_level = true
+mesh = SubResource("CylinderMesh_onrkg")
+script = ExtResource("3_i3pqv")

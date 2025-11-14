@@ -1,18 +1,24 @@
 extends CharacterBody3D
 
+@onready var landing_indicator: MeshInstance3D = $LandingIndicator
 
 const SPEED = 8.0
+const JUMP_VELOCITY = 7.0
+
 const GROUND_ACCEL = 0.1
 const AIR_ACCEL = 0.01
-const JUMP_VELOCITY = 4.5
+
 
 
 func _physics_process(delta: float) -> void:
     if not is_on_floor():
         velocity += get_gravity() * delta
+    else:
+        landing_indicator.update()
 
     if Input.is_action_just_pressed("jump") and is_on_floor():
         velocity.y = JUMP_VELOCITY
+
 
     var input_dir := Input.get_vector("left", "right", "forward", "backward")
     var direction := Vector3(input_dir.x, 0, input_dir.y).rotated(Vector3.UP, $CameraSystem.rotation.y)
