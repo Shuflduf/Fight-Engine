@@ -1,5 +1,6 @@
 extends CharacterBody3D
 
+@onready var cam: Camera3D = %Camera
 
 const SPEED = 8.0
 const JUMP_VELOCITY = 7.0
@@ -18,7 +19,7 @@ func _physics_process(delta: float) -> void:
 
     var input_dir := Input.get_vector("left", "right", "forward", "backward")
     is_moving = !input_dir.is_zero_approx()
-    var direction := Vector3(input_dir.x, 0, input_dir.y).rotated(Vector3.UP, $CameraSystem.rotation.y)
+    var direction := Vector3(input_dir.x, 0, input_dir.y).rotated(Vector3.UP, cam.rotation.y)
     var accel = GROUND_ACCEL if is_on_floor() else AIR_ACCEL
     velocity.x = lerp(velocity.x, direction.x * SPEED, accel)
     velocity.z = lerp(velocity.z, direction.z * SPEED, accel)
