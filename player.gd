@@ -14,7 +14,8 @@ const MAX_ACCELERATION = 10 * MAX_VELOCITY_GROUND
 const GRAVITY = 15.34
 const STOP_SPEED = 1.5
 const JUMP_IMPULSE = 5.5
-const FRICTION = 1.0
+const FRICTION = 4.0
+
 
 var wish_jump = false
 var wish_dir = Vector3.ZERO
