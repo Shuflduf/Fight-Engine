@@ -11,16 +11,15 @@ func _ready() -> void:
 		
 		ray.reparent.call_deferred(player)
 		
-func _physics_process(delta: float) -> void:
-	pass
+func _physics_process(_delta: float) -> void:
 	for ray in rays:
 		var dir = flatten_vec(ray.position).normalized()
-		var player_delta = player.velocity / 10.0
-		player_delta = Vector3(player_delta.x, 0.0, player_delta.z)
-		var ray_pos = dir * (1 + player_delta.length()) * 0.5
+		var vel = flatten_vec(player.velocity) / 10.0
+		var ray_pos = dir * (1 + vel.length()) * 0.55
 		ray.position.x = ray_pos.x
 		ray.position.z = ray_pos.z
-		print(ray.position)
+		# this may be the root of evil for future me
+		ray.disabled = player.velocity.y > 0.2
 			
 
 func flatten_vec(input: Vector3) -> Vector3:
