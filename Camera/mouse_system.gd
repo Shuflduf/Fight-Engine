@@ -21,7 +21,6 @@ func _input(event: InputEvent) -> void:
 		rotation_offset.y += mouse_movement.x
 		rotation_offset.x += mouse_movement.y
 		
-		print(rotation_offset.y)
 		if third_person:
 			position_offset = third_person_pos.position.rotated(Vector3.UP, rotation_offset.y)
 			position_offset.y = -rotation_offset.x

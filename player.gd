@@ -14,14 +14,16 @@ const MAX_ACCELERATION = 10 * MAX_VELOCITY_GROUND
 const GRAVITY = 15.34
 const STOP_SPEED = 1.5
 const JUMP_IMPULSE = 5.5
-const FRICTION = 4.0
+const FRICTION = 1.0
 
 var wish_jump = false
 var wish_dir = Vector3.ZERO
 
+
 func _physics_process(delta: float) -> void:
 	_process_inputs()
 	_process_movement(delta)
+	
 	
 	move_and_slide()
 
@@ -60,3 +62,10 @@ func accelerate(max_velocity: float, delta: float) -> Vector3:
 	var add_speed = clamp(max_velocity - current_speed, 0, MAX_ACCELERATION * delta)
 	
 	return velocity + add_speed * wish_dir
+
+
+	#var ray_pos = Vector3(velocity.x, 0.0, velocity.z).normalized() / 1.8
+	#vel_stair_handler.position = ray_pos
+	#for ray in [vel_stair_handler, wish_stair_handler]:
+		#if ray.is_colliding():
+			#global_position.y = ray.get_collision_point().y + 1.1
