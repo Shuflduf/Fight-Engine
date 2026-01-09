@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://dv0nhmu74dx4x"]
 
+[ext_resource type="Script" uid="uid://btkfx3vexpgwy" path="res://Skills/Commando/phase_round_projectile.gd" id="1_8t77f"]
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vsyh1"]
 shading_mode = 0
 albedo_color = Color(0.26999998, 0.7931667, 1, 1)
@@ -130,28 +132,45 @@ _data = {
 &"loop": SubResource("Animation_vsyh1")
 }
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_8t77f"]
+height = 2.4
+radius = 0.90000004
+
 [node name="PhaseRoundProjectile" type="Node3D" unique_id=468448743]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+top_level = true
+script = ExtResource("1_8t77f")
 
 [node name="00" type="MeshInstance3D" parent="." unique_id=685647273]
-transform = Transform3D(0.41239405, 0, 0, 0, -1.8026316e-08, -0.41239405, 0, 0.41239405, -1.8026316e-08, 0, 0, -1.5)
+transform = Transform3D(0.39041114, 0, 0, 0, -1.7065412e-08, -0.39041114, 0, 0.39041114, -1.7065412e-08, 0, 0, -1.5)
 mesh = SubResource("TorusMesh_vsyh1")
 
 [node name="01" type="MeshInstance3D" parent="." unique_id=758849250]
-transform = Transform3D(0.87005925, 0, 0, 0, -3.8031498e-08, -0.87005925, 0, 0.87005925, -3.8031498e-08, 0, 0, -0.9)
+transform = Transform3D(0.85803735, 0, 0, 0, -3.7506005e-08, -0.85803735, 0, 0.85803735, -3.7506005e-08, 0, 0, -0.9)
 mesh = SubResource("TorusMesh_vsyh1")
 
 [node name="02" type="MeshInstance3D" parent="." unique_id=580396138]
-transform = Transform3D(0.7736533, 0, 0, 0, -3.381746e-08, -0.7736533, 0, 0.7736533, -3.381746e-08, 0, 0, 0)
+transform = Transform3D(0.7860187, 0, 0, 0, -3.435797e-08, -0.7860187, 0, 0.7860187, -3.435797e-08, 0, 0, 0)
 mesh = SubResource("TorusMesh_vsyh1")
 
 [node name="03" type="MeshInstance3D" parent="." unique_id=1124922035]
-transform = Transform3D(0.4790424, 0, 0, 0, -2.093961e-08, -0.4790424, 0, 0.4790424, -2.093961e-08, 0, 0, 0.3)
+transform = Transform3D(0.48783553, 0, 0, 0, -2.1323968e-08, -0.48783553, 0, 0.48783553, -2.1323968e-08, 0, 0, 0.3)
 mesh = SubResource("TorusMesh_vsyh1")
 
 [node name="04" type="MeshInstance3D" parent="." unique_id=602260641]
-transform = Transform3D(0.14319229, 0, 0, 0, -6.2591337e-09, -0.14319229, 0, 0.14319229, -6.2591337e-09, 0, 0, 0.90000004)
+transform = Transform3D(0.15634769, 0, 0, 0, -6.8341746e-09, -0.15634769, 0, 0.15634769, -6.8341746e-09, 0, 0, 0.90000004)
 mesh = SubResource("TorusMesh_vsyh1")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=55920519]
 libraries/ = SubResource("AnimationLibrary_8t77f")
 autoplay = &"loop"
+
+[node name="Hurtbox" type="Area3D" parent="." unique_id=559665134]
+collision_layer = 4
+collision_mask = 10
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox" unique_id=760527774]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
+shape = SubResource("CylinderShape3D_8t77f")
+
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]

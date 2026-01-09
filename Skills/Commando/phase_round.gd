@@ -1,10 +1,13 @@
 extends Node
 
+@export var phase_round_projectile: PackedScene
 @export var double_tap: Node3D
 @export var use_cooldown = 1.0
 
 var current_cooldown = 0.0
 var hold_duration = 0.0
+
+@onready var cam: Camera3D = get_parent().cam
 
 func _physics_process(delta: float) -> void:
 	current_cooldown -= delta
@@ -21,6 +24,14 @@ func _physics_process(delta: float) -> void:
 	
 	if Input.is_action_just_released(&"secondary") and hold_duration > 0.0:
 		current_cooldown = use_cooldown
+		
+		var new_projectile: Node3D = phase_round_projectile.instantiate()
+		add_child(new_projectile)
+		new_projectile.global_rotation = cam.global_rotation
+		new_projectile.global_position = cam.global_position
+		new_projectile.speed = clamp(hold_duration, 1.0, 3.0) * 15.0
+		hold_duration = 0.0
+		
 		#await get_tree().create_timer(0.1).timeout
 		for i in double_tap.guns.size():
 			var gun: Node3D = double_tap.guns[i]
