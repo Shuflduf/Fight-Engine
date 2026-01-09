@@ -1,19 +1,22 @@
 extends Node3D
 
 @export var shoot_cooldown = 0.3
-@export var akimbos: Array[Node3D]
+@export var guns: Array[Node3D]
 @export var kick_strength_deg = 20.0
 
 var current_cooldown = 0.0
 var next_gun_index = 0
 
 @onready var hitscan: Node = get_parent().ray
+@onready var og_gun_transforms: Array = guns.map(func(gun): return gun.transform)
 
 func shoot():
+	
 	current_cooldown = shoot_cooldown
-	akimbos[next_gun_index].rotation.z = deg_to_rad(kick_strength_deg)
+	guns[next_gun_index].transform = og_gun_transforms[next_gun_index]
+	guns[next_gun_index].rotation.z = deg_to_rad(kick_strength_deg)
 	next_gun_index += 1
-	next_gun_index %= akimbos.size()
+	next_gun_index %= guns.size()
 	
 	if hitscan.is_colliding():
 		var new_particles: GPUParticles3D = $ImpactParticles.duplicate()
@@ -33,6 +36,6 @@ func _physics_process(delta: float) -> void:
 	current_cooldown -= delta
 	if Input.is_action_pressed("primary") && current_cooldown <= 0.0:
 		shoot()
-	for akimbo in akimbos:
-		if akimbo.rotation.z > 0:
-			akimbo.rotation.z -= delta * deg_to_rad(kick_strength_deg) / (shoot_cooldown * akimbos.size())
+	for gun in guns:
+		if gun.rotation.z > 0:
+			gun.rotation.z -= delta * deg_to_rad(kick_strength_deg) / (shoot_cooldown * guns.size())

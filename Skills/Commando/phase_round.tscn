@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bqn60kr4ecdy6"]
+
+[ext_resource type="Script" uid="uid://cqfn3xa7prlil" path="res://Skills/Commando/phase_round.gd" id="1_scfu1"]
+
+[node name="PhaseRound" type="Node" unique_id=1011272410]
+script = ExtResource("1_scfu1")
