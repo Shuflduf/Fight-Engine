@@ -13,4 +13,5 @@ top_level = true
 billboard = 1
 double_sided = false
 text = "4"
+font_size = 64
 outline_size = 0

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://d1k5aq2qsihu1"]
 
-[ext_resource type="Script" uid="uid://cr8fqcdpni5fm" path="res://Weapons/Akimbos/akimbos.gd" id="1_budbm"]
+[ext_resource type="Script" uid="uid://cr8fqcdpni5fm" path="res://Weapons/Double Tap/double_tap.gd" id="1_budbm"]
 [ext_resource type="PackedScene" uid="uid://ctmmjss35lk0u" path="res://Assets/3D/gun.glb" id="1_ceih7"]
 [ext_resource type="Script" uid="uid://dfjixm86uiam3" path="res://Weapons/follow_camera.gd" id="3_kcbf8"]
 [ext_resource type="Script" uid="uid://b57ewqt8y3w8" path="res://Weapons/hitscan.gd" id="4_0tkqx"]
