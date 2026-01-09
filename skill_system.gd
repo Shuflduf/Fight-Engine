@@ -3,6 +3,7 @@ extends Node3D
 @export var cam: Camera3D
 @export var ray: RayCast3D
 @export var player: CharacterBody3D
+@export var cam_systems: Node
 
 #func _ready() -> void:
 	#for weapon in get_children():
