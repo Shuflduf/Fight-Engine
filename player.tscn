@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cmcok53rej5sy"]
 
 [ext_resource type="Script" uid="uid://b8c82e4n8cldl" path="res://player.gd" id="1_4flbx"]
+[ext_resource type="PackedScene" uid="uid://i8x84sh2p2q4" path="res://weapon_system.tscn" id="2_2hs0m"]
 [ext_resource type="Script" uid="uid://chmr6w7f8yykk" path="res://Camera/camera_system_manager.gd" id="2_onrkg"]
 [ext_resource type="Script" uid="uid://bjfwewfpcvxcm" path="res://Camera/mouse_system.gd" id="4_hqtel"]
 [ext_resource type="Script" uid="uid://bhlpfny8uqeu8" path="res://rocket_jump.gd" id="5_sweqy"]
@@ -35,6 +36,15 @@ gizmo_extents = 1.0
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
 fov = 100.0
+
+[node name="Hitscan" type="RayCast3D" parent="Camera" unique_id=1297929075]
+target_position = Vector3(0, 0, -1000)
+collision_mask = 11
+collide_with_areas = true
+
+[node name="WeaponSystem" parent="." unique_id=1590952291 node_paths=PackedStringArray("cam", "ray") instance=ExtResource("2_2hs0m")]
+cam = NodePath("../Camera")
+ray = NodePath("../Camera/Hitscan")
 
 [node name="CameraSystems" type="Node3D" parent="." unique_id=1164359795 node_paths=PackedStringArray("cam")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
@@ -82,3 +92,25 @@ shape = SubResource("SeparationRayShape3D_sweqy")
 [node name="CollisionShape3D9" type="CollisionShape3D" parent="StairHandler" unique_id=1844107466]
 transform = Transform3D(0, 0.99999994, -4.371139e-08, 0, -4.371138e-08, -1, -0.99999994, 0, -3.5527137e-15, 0.025000006, -0.6, 0.975)
 shape = SubResource("SeparationRayShape3D_sweqy")
+
+[node name="UI" type="Control" parent="." unique_id=7575723]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="UI" unique_id=1320670856]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2.0
+offset_top = -2.0
+offset_right = 2.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
