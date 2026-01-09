@@ -37,4 +37,9 @@ monitorable = false
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ExplosionRadius" unique_id=1293939286]
 shape = SubResource("SphereShape3D_m21px")
 
+[node name="ExplodeTimer" type="Timer" parent="." unique_id=906323824]
+one_shot = true
+autostart = true
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="ExplodeTimer" to="." method="_on_explode_timer_timeout"]
