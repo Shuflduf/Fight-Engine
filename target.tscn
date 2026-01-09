@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://ba7lx70tapam4"]
+
+[ext_resource type="PackedScene" uid="uid://b1k3dv3hnfjvc" path="res://hitbox.tscn" id="1_t2jmu"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_3hr3o"]
+height = 0.1
+radial_segments = 32
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_3hr3o"]
+height = 0.1
+
+[node name="Target" type="Node3D" unique_id=225967718]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1097206489]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+mesh = SubResource("CylinderMesh_3hr3o")
+
+[node name="Hitbox" parent="." unique_id=1948627840 instance=ExtResource("1_t2jmu")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox" unique_id=1644924613]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+shape = SubResource("CylinderShape3D_3hr3o")

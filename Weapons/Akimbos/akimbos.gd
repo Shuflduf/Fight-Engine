@@ -22,12 +22,16 @@ func shoot():
 		new_particles.quaternion = Quaternion(Vector3.UP, hitscan.ray.get_collision_normal())
 		new_particles.restart()
 		new_particles.finished.connect(func(): new_particles.queue_free())
+		
+		var hitbox = hitscan.ray.get_collider()
+		if hitbox.name == &"Hitbox":
+			hitbox.hit(4.0)
 
 func _physics_process(delta: float) -> void:
 	if !visible:
 		return
 	current_cooldown -= delta
-	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) && current_cooldown <= 0.0:
+	if Input.is_action_pressed("primary") && current_cooldown <= 0.0:
 		shoot()
 	for akimbo in akimbos:
 		if akimbo.rotation.z > 0:
