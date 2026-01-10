@@ -20,6 +20,7 @@ func _input(event: InputEvent) -> void:
 		var mouse_movement = -event.screen_relative * actual_mouse_sens
 		rotation_offset.y += mouse_movement.x
 		rotation_offset.x += mouse_movement.y
+		rotation_offset.x = clamp(rotation_offset.x, -PI / 2.0, PI / 2.0)
 		
 		if third_person:
 			position_offset = third_person_pos.position.rotated(Vector3.UP, rotation_offset.y)

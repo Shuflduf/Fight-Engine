@@ -19,3 +19,6 @@ func _physics_process(_delta: float) -> void:
 	
 	if Input.is_action_pressed(&"utility"):
 		skills.utility()
+	
+	if Input.is_action_pressed(&"special"):
+		skills.special()

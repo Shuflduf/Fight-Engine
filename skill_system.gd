@@ -22,6 +22,10 @@ func secondary():
 func utility():
 	call_skill(SkillSlot.UTILITY)
 
+func special():
+	call_skill(SkillSlot.SPECIAL)
+
+
 func call_skill(skill: SkillSlot):
 	var target_skill = skills[skill]
 	if target_skill:

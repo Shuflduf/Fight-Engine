@@ -8,9 +8,15 @@ extends Node
 
 var current_cooldown = 0.0
 
-func _physics_process(_delta: float) -> void:
-	if Input.is_action_just_pressed(&"special") and current_cooldown <= 0.0:
-		var new_nade: RigidBody3D = nade_scene.instantiate()
-		add_child(new_nade)
-		new_nade.global_position = cam.global_position
-		new_nade.linear_velocity = player.velocity + (-cam.basis.z.normalized() * 15.0)
+func _physics_process(delta: float) -> void:
+	current_cooldown -= delta
+	
+func use():
+	if current_cooldown > 0.0:
+		return
+		
+	var new_nade: RigidBody3D = nade_scene.instantiate()
+	add_child(new_nade)
+	new_nade.global_position = cam.global_position
+	new_nade.linear_velocity = player.velocity + (-cam.basis.z.normalized() * 15.0)
+	current_cooldown = skill_cooldown
