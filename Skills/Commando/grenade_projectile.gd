@@ -8,7 +8,7 @@ func _on_body_entered(_body: Object) -> void:
 func _on_explode_timer_timeout() -> void:
 	for body in $ExplosionRadius.get_overlapping_bodies():
 		print(body)
-		var rocket_jump_node = body.get_node(^"RocketJump")
+		var rocket_jump_node = body.get_node_or_null(^"RocketJump")
 		if rocket_jump_node:
 			var vec_to_body = body.global_position - global_position
 			var distance = vec_to_body.length()

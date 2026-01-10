@@ -31,7 +31,6 @@ func shoot():
 		new_particles.finished.connect(func(): new_particles.queue_free())
 		
 		var hitbox = hitscan.get_collider()
-		print(hitbox)
 		if hitbox.name == &"Hitbox":
 			hitbox.hit(4.0)
 

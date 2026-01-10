@@ -24,9 +24,6 @@ script = ExtResource("4_hqtel")
 [node name="Offset" type="Node" parent="CameraSystems" index="1" unique_id=375580789]
 script = ExtResource("5_1jxqw")
 
-[node name="Hitscan" parent="Camera" parent_id_path=PackedInt32Array(1588344406) index="0" unique_id=1297929075]
-collision_mask = 3
-
 [node name="SkillSystem" parent="." index="5" unique_id=1590952291 node_paths=PackedStringArray("cam_systems")]
 cam_systems = NodePath("../CameraSystems")
 
