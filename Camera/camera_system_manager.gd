@@ -1,7 +1,7 @@
 class_name CameraSystemManager
 extends Node
 
-@onready var default_cam_transform: Marker3D = $"../DefaultCamPos"
+@onready var default_cam_transform: Marker3D = %DefaultCamPos
 
 @export var cam: Camera3D
 

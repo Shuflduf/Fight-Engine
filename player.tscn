@@ -1,105 +1,32 @@
-[gd_scene format=3 uid="uid://cmcok53rej5sy"]
+[gd_scene format=3 uid="uid://cnveompyv8nf"]
 
-[ext_resource type="Script" uid="uid://b8c82e4n8cldl" path="res://player.gd" id="1_4flbx"]
-[ext_resource type="PackedScene" uid="uid://i8x84sh2p2q4" path="res://skill_system.tscn" id="2_2hs0m"]
+[ext_resource type="PackedScene" uid="uid://cmcok53rej5sy" path="res://entity.tscn" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://chmr6w7f8yykk" path="res://Camera/camera_system_manager.gd" id="2_onrkg"]
 [ext_resource type="Script" uid="uid://bjfwewfpcvxcm" path="res://Camera/mouse_system.gd" id="4_hqtel"]
 [ext_resource type="Script" uid="uid://b78j5vtu0kl5i" path="res://Camera/camera_offset.gd" id="5_1jxqw"]
-[ext_resource type="Script" uid="uid://bhlpfny8uqeu8" path="res://rocket_jump.gd" id="5_sweqy"]
-[ext_resource type="Script" uid="uid://jbebb4hi27xp" path="res://stair_handler.gd" id="6_2hs0m"]
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_4flbx"]
+[node name="Player" unique_id=1807276841 instance=ExtResource("1_4flbx")]
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_4flbx"]
-
-[sub_resource type="SeparationRayShape3D" id="SeparationRayShape3D_sweqy"]
-length = 0.4
-
-[node name="Player" type="CharacterBody3D" unique_id=1807276841]
-collision_layer = 2
-script = ExtResource("1_4flbx")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=50111811]
-shape = SubResource("CylinderShape3D_4flbx")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=214712984]
-mesh = SubResource("CylinderMesh_4flbx")
-
-[node name="ThirdPersonPos" type="Marker3D" parent="." unique_id=350284731]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1.5)
-gizmo_extents = 1.0
-
-[node name="DefaultCamPos" type="Marker3D" parent="." unique_id=1695664787]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
-gizmo_extents = 1.0
-
-[node name="Camera" type="Camera3D" parent="." unique_id=1588344406]
+[node name="DefaultCamPos" type="Marker3D" parent="." index="2" unique_id=1737197406]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
-fov = 100.0
+gizmo_extents = 1.0
 
-[node name="Hitscan" type="RayCast3D" parent="Camera" unique_id=1297929075]
-target_position = Vector3(0, 0, -1000)
-collision_mask = 11
-collide_with_areas = true
-
-[node name="SkillSystem" parent="." unique_id=1590952291 node_paths=PackedStringArray("cam", "ray", "player", "cam_systems") instance=ExtResource("2_2hs0m")]
-cam = NodePath("../Camera")
-ray = NodePath("../Camera/Hitscan")
-player = NodePath("..")
-cam_systems = NodePath("../CameraSystems")
-
-[node name="CameraSystems" type="Node3D" parent="." unique_id=1164359795 node_paths=PackedStringArray("cam")]
+[node name="CameraSystems" type="Node3D" parent="." index="3" unique_id=672014216 node_paths=PackedStringArray("cam")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
 script = ExtResource("2_onrkg")
 cam = NodePath("../Camera")
 
-[node name="Mouse" type="Node" parent="CameraSystems" unique_id=1919438486 node_paths=PackedStringArray("third_person_pos")]
+[node name="Mouse" type="Node" parent="CameraSystems" index="0" unique_id=278154113]
 script = ExtResource("4_hqtel")
-third_person_pos = NodePath("../../ThirdPersonPos")
 
-[node name="Offset" type="Node" parent="CameraSystems" unique_id=1733821381]
+[node name="Offset" type="Node" parent="CameraSystems" index="1" unique_id=375580789]
 script = ExtResource("5_1jxqw")
 
-[node name="RocketJump" type="Node" parent="." unique_id=1703434099]
-script = ExtResource("5_sweqy")
+[node name="SkillSystem" parent="." index="5" unique_id=1590952291 node_paths=PackedStringArray("cam_systems")]
+cam_systems = NodePath("../CameraSystems")
 
-[node name="StairHandler" type="Node3D" parent="." unique_id=1295697205]
-script = ExtResource("6_2hs0m")
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="StairHandler" unique_id=557834681]
-transform = Transform3D(0.70710677, 0.70710677, -3.090862e-08, 0, -4.371139e-08, -1, -0.70710677, 0.70710677, -3.090862e-08, 0.6540738, -0.6, 0.6290738)
-shape = SubResource("SeparationRayShape3D_sweqy")
-
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="StairHandler" unique_id=1230764938]
-transform = Transform3D(0.70710677, 0.70710677, -3.090862e-08, 0, -4.371139e-08, -1, -0.70710677, 0.70710677, -3.090862e-08, 0.72478443, -0.6, -0.7144291)
-shape = SubResource("SeparationRayShape3D_sweqy")
-
-[node name="CollisionShape3D4" type="CollisionShape3D" parent="StairHandler" unique_id=370750050]
-transform = Transform3D(0.70710677, 0.70710677, -3.090862e-08, 0, -4.371139e-08, -1, -0.70710677, 0.70710677, -3.090862e-08, -0.6894291, -0.6, -0.7144291)
-shape = SubResource("SeparationRayShape3D_sweqy")
-
-[node name="CollisionShape3D5" type="CollisionShape3D" parent="StairHandler" unique_id=1310112954]
-transform = Transform3D(0.70710677, 0.70710677, -3.090862e-08, 0, -4.371139e-08, -1, -0.70710677, 0.70710677, -3.090862e-08, -0.6894291, -0.6, 0.69978446)
-shape = SubResource("SeparationRayShape3D_sweqy")
-
-[node name="CollisionShape3D6" type="CollisionShape3D" parent="StairHandler" unique_id=1327909452]
-transform = Transform3D(0, 0.99999994, -4.371139e-08, 0, -4.371138e-08, -1, -0.99999994, 0, -3.5527137e-15, 0.925, -0.6, -0.024999976)
-shape = SubResource("SeparationRayShape3D_sweqy")
-
-[node name="CollisionShape3D7" type="CollisionShape3D" parent="StairHandler" unique_id=39639190]
-transform = Transform3D(0, 0.99999994, -4.371139e-08, 0, -4.371138e-08, -1, -0.99999994, 0, -3.5527137e-15, 0.025000006, -0.6, -1.025)
-shape = SubResource("SeparationRayShape3D_sweqy")
-
-[node name="CollisionShape3D8" type="CollisionShape3D" parent="StairHandler" unique_id=741612696]
-transform = Transform3D(0, 0.99999994, -4.371139e-08, 0, -4.371138e-08, -1, -0.99999994, 0, -3.5527137e-15, -0.97499996, -0.6, -0.024999976)
-shape = SubResource("SeparationRayShape3D_sweqy")
-
-[node name="CollisionShape3D9" type="CollisionShape3D" parent="StairHandler" unique_id=1844107466]
-transform = Transform3D(0, 0.99999994, -4.371139e-08, 0, -4.371138e-08, -1, -0.99999994, 0, -3.5527137e-15, 0.025000006, -0.6, 0.975)
-shape = SubResource("SeparationRayShape3D_sweqy")
-
-[node name="UI" type="Control" parent="." unique_id=7575723]
+[node name="UI" type="Control" parent="." index="8" unique_id=1162473960]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -107,7 +34,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ColorRect" type="ColorRect" parent="UI" unique_id=1320670856]
+[node name="ColorRect" type="ColorRect" parent="UI" index="0" unique_id=324453582]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
