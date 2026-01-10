@@ -4,7 +4,12 @@
 [ext_resource type="Script" uid="uid://chmr6w7f8yykk" path="res://Camera/camera_system_manager.gd" id="2_onrkg"]
 [ext_resource type="Script" uid="uid://bjfwewfpcvxcm" path="res://Camera/mouse_system.gd" id="4_hqtel"]
 [ext_resource type="Script" uid="uid://b78j5vtu0kl5i" path="res://Camera/camera_offset.gd" id="5_1jxqw"]
+[ext_resource type="PackedScene" uid="uid://d1k5aq2qsihu1" path="res://Skills/Commando/double_tap.tscn" id="5_n7ghd"]
 [ext_resource type="Script" uid="uid://bhlpfny8uqeu8" path="res://rocket_jump.gd" id="5_sweqy"]
+[ext_resource type="Script" uid="uid://bxs1a8jmo002p" path="res://player_controller.gd" id="6_2hs0m"]
+[ext_resource type="PackedScene" uid="uid://c2pbtdi5r7367" path="res://Skills/Commando/tactical_slide.tscn" id="6_nvl01"]
+[ext_resource type="PackedScene" uid="uid://bqn60kr4ecdy6" path="res://Skills/Commando/phase_round.tscn" id="7_ivps1"]
+[ext_resource type="PackedScene" uid="uid://bnhkfym5al36a" path="res://Skills/Commando/grenade_skill.tscn" id="8_urp6f"]
 
 [node name="Player" unique_id=1807276841 instance=ExtResource("1_4flbx")]
 
@@ -24,8 +29,23 @@ script = ExtResource("4_hqtel")
 [node name="Offset" type="Node" parent="CameraSystems" index="1" unique_id=375580789]
 script = ExtResource("5_1jxqw")
 
-[node name="SkillSystem" parent="." index="5" unique_id=1590952291 node_paths=PackedStringArray("cam_systems")]
+[node name="SkillSystem" parent="." index="5" unique_id=1590952291 node_paths=PackedStringArray("cam_systems", "skills")]
 cam_systems = NodePath("../CameraSystems")
+skills = {
+0: NodePath("DoubleTap"),
+1: NodePath("PhaseRound"),
+2: NodePath("TacticalSlide"),
+3: NodePath("GrenadeSkill")
+}
+
+[node name="DoubleTap" parent="SkillSystem" index="0" unique_id=1077974154 instance=ExtResource("5_n7ghd")]
+
+[node name="PhaseRound" parent="SkillSystem" index="1" unique_id=1011272410 node_paths=PackedStringArray("double_tap") instance=ExtResource("7_ivps1")]
+double_tap = NodePath("../DoubleTap")
+
+[node name="TacticalSlide" parent="SkillSystem" index="2" unique_id=1071647213 instance=ExtResource("6_nvl01")]
+
+[node name="GrenadeSkill" parent="SkillSystem" index="3" unique_id=701401869 instance=ExtResource("8_urp6f")]
 
 [node name="UI" type="Control" parent="." index="7" unique_id=1162473960]
 layout_mode = 3
@@ -51,3 +71,8 @@ grow_vertical = 2
 
 [node name="RocketJump" type="Node" parent="." index="8" unique_id=1195640900]
 script = ExtResource("5_sweqy")
+
+[node name="PlayerController" type="Node" parent="." index="10" unique_id=884207362 node_paths=PackedStringArray("cam", "skills")]
+script = ExtResource("6_2hs0m")
+cam = NodePath("../Camera")
+skills = NodePath("../SkillSystem")

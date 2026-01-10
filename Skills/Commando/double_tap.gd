@@ -11,7 +11,9 @@ var next_gun_index = 0
 @onready var hitscan: RayCast3D = get_parent().ray
 @onready var og_gun_transforms: Array = guns.map(func(gun): return gun.transform)
 
-func shoot():
+func use():
+	if current_cooldown > 0.0:
+		return
 	current_cooldown = shoot_cooldown
 	guns[next_gun_index].transform = og_gun_transforms[next_gun_index]
 	var tween = get_tree().create_tween().set_ease(Tween.EASE_OUT)
@@ -35,8 +37,4 @@ func shoot():
 			hitbox.hit(4.0)
 
 func _physics_process(delta: float) -> void:
-	if !visible:
-		return
 	current_cooldown -= delta
-	if Input.is_action_pressed("primary") && current_cooldown <= 0.0:
-		shoot()

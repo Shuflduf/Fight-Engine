@@ -21,17 +21,10 @@ var wish_dir = Vector3.ZERO
 var jump_enabled = true
 
 func _physics_process(delta: float) -> void:
-	_process_inputs()
 	_process_movement(delta)
-	
 	
 	move_and_slide()
 
-func _process_inputs():
-	var input_dir = Input.get_vector(&"left", &"right", &"forward", &"backward").rotated(-cam.rotation.y)
-	wish_dir = Vector3(input_dir.x, 0.0, input_dir.y)
-	if Input.is_action_pressed(&"jump") and is_on_floor() and jump_enabled:
-		wish_jump = true
 
 func _process_movement(delta: float):
 	if is_on_floor():
