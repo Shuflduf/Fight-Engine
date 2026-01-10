@@ -4,6 +4,7 @@ extends Node
 @export var skills: Node3D
 
 @onready var player: CharacterBody3D = get_parent()
+@onready var skin: Node3D = $"../Skin"
 
 func _physics_process(_delta: float) -> void:
 	var input_dir = Input.get_vector(&"left", &"right", &"forward", &"backward").rotated(-cam.rotation.y)
@@ -22,3 +23,6 @@ func _physics_process(_delta: float) -> void:
 	
 	if Input.is_action_pressed(&"special"):
 		skills.special()
+	
+	skin.visible = get_viewport().get_camera_3d() != cam
+	skin.rotation.y = cam.rotation.y + PI

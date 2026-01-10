@@ -10,15 +10,27 @@
 [ext_resource type="PackedScene" uid="uid://c2pbtdi5r7367" path="res://Skills/Commando/tactical_slide.tscn" id="6_nvl01"]
 [ext_resource type="PackedScene" uid="uid://bqn60kr4ecdy6" path="res://Skills/Commando/phase_round.tscn" id="7_ivps1"]
 [ext_resource type="PackedScene" uid="uid://bnhkfym5al36a" path="res://Skills/Commando/grenade_skill.tscn" id="8_urp6f"]
+[ext_resource type="PackedScene" uid="uid://dwuwxr4xw23hu" path="res://Assets/3D/commando.glb" id="11_nvl01"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_n7ghd"]
+top_radius = 0.3
+bottom_radius = 0.3
 
 [node name="Player" unique_id=1807276841 instance=ExtResource("1_4flbx")]
 
-[node name="DefaultCamPos" type="Marker3D" parent="." index="2" unique_id=1737197406]
+[node name="Skin" parent="." index="0" unique_id=835656634 instance=ExtResource("11_nvl01")]
+transform = Transform3D(-0.99999994, 0, 1.1920929e-07, 0, 1, 0, -1.1920929e-07, 0, -0.99999994, 0, -1, 0)
+
+[node name="MeshInstance3D" parent="." index="2" unique_id=214712984]
+visible = false
+mesh = SubResource("CylinderMesh_n7ghd")
+
+[node name="DefaultCamPos" type="Marker3D" parent="." index="3" unique_id=1737197406]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
 gizmo_extents = 1.0
 
-[node name="CameraSystems" type="Node3D" parent="." index="3" unique_id=672014216 node_paths=PackedStringArray("cam")]
+[node name="CameraSystems" type="Node3D" parent="." index="4" unique_id=672014216 node_paths=PackedStringArray("cam")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
 script = ExtResource("2_onrkg")
 cam = NodePath("../Camera")
@@ -29,7 +41,10 @@ script = ExtResource("4_hqtel")
 [node name="Offset" type="Node" parent="CameraSystems" index="1" unique_id=375580789]
 script = ExtResource("5_1jxqw")
 
-[node name="SkillSystem" parent="." index="5" unique_id=1590952291 node_paths=PackedStringArray("cam_systems", "skills")]
+[node name="Camera" parent="." index="5" unique_id=1588344406]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
+
+[node name="SkillSystem" parent="." index="6" unique_id=1590952291 node_paths=PackedStringArray("cam_systems", "skills")]
 cam_systems = NodePath("../CameraSystems")
 skills = {
 0: NodePath("DoubleTap"),
@@ -47,7 +62,7 @@ double_tap = NodePath("../DoubleTap")
 
 [node name="GrenadeSkill" parent="SkillSystem" index="3" unique_id=701401869 instance=ExtResource("8_urp6f")]
 
-[node name="UI" type="Control" parent="." index="7" unique_id=1162473960]
+[node name="UI" type="Control" parent="." index="8" unique_id=1162473960]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -69,10 +84,10 @@ offset_bottom = 2.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="RocketJump" type="Node" parent="." index="8" unique_id=1195640900]
+[node name="RocketJump" type="Node" parent="." index="9" unique_id=1195640900]
 script = ExtResource("5_sweqy")
 
-[node name="PlayerController" type="Node" parent="." index="10" unique_id=884207362 node_paths=PackedStringArray("cam", "skills")]
+[node name="PlayerController" type="Node" parent="." index="11" unique_id=884207362 node_paths=PackedStringArray("cam", "skills")]
 script = ExtResource("6_2hs0m")
 cam = NodePath("../Camera")
 skills = NodePath("../SkillSystem")

@@ -55,10 +55,3 @@ func accelerate(max_velocity: float, delta: float) -> Vector3:
 	var add_speed = clamp(max_velocity - current_speed, 0, MAX_ACCELERATION * delta)
 	
 	return velocity + add_speed * wish_dir
-
-
-	#var ray_pos = Vector3(velocity.x, 0.0, velocity.z).normalized() / 1.8
-	#vel_stair_handler.position = ray_pos
-	#for ray in [vel_stair_handler, wish_stair_handler]:
-		#if ray.is_colliding():
-			#global_position.y = ray.get_collision_point().y + 1.1
