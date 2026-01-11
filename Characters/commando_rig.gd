@@ -20,6 +20,8 @@ func primary(index: int):
 	tween.tween_property(target_hand, ^"position:z", og_pos.z, 0.6).set_trans(Tween.TRANS_CUBIC)
 
 func secondary(started: bool):
+	return
+	@warning_ignore("unreachable_code")
 	if started:
 		for i in hand_handles.size():
 			var hand: Marker3D = hand_handles[i]
