@@ -1,13 +1,15 @@
 extends Node
 
+signal used
+
 @export var ability_cooldown = 1.0
 @export var dip_curve: Curve
 
-var current_cooldown = 0.0
 @onready var cam: Camera3D = get_parent().cam
 @onready var player: CharacterBody3D = get_parent().player
 @onready var cam_offset = get_parent().cam_systems.get_node_or_null(^"Offset") if get_parent().cam_systems else null
 
+var current_cooldown = 0.0
 var slide_initiated = false
 
 
@@ -36,5 +38,5 @@ func use():
 		player.velocity = boost_dir * speed
 		player.velocity.y = min(speed, 8.0)
 		slide_initiated = false
-	
+	used.emit()
 	

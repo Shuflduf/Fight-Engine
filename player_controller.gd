@@ -6,6 +6,9 @@ extends Node
 @onready var player: CharacterBody3D = get_parent()
 @onready var skin: Node3D = $"../Skin"
 
+func _ready() -> void:
+	skills.skills[skills.SkillSlot.PRIMARY].used.connect(skin.shoot)
+
 func _physics_process(_delta: float) -> void:
 	var input_dir = Input.get_vector(&"left", &"right", &"forward", &"backward").rotated(-cam.rotation.y)
 	player.wish_dir = Vector3(input_dir.x, 0.0, input_dir.y)
@@ -25,5 +28,5 @@ func _physics_process(_delta: float) -> void:
 		skills.special()
 	
 	skin.visible = get_viewport().get_camera_3d() != cam
-	skin.rotation.y = cam.rotation.y + PI
+	skin.rotation.y = cam.rotation.y
 	skin.set_spine_angle(-cam.rotation.x)

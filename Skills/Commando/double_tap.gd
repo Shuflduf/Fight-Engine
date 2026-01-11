@@ -1,5 +1,7 @@
 extends Node3D
 
+signal used(gun_index: int)
+
 @export var shoot_cooldown = 0.3
 @export var guns: Array[Node3D]
 @export var kick_strength_deg = 20.0
@@ -35,6 +37,8 @@ func use():
 		var hitbox = hitscan.get_collider()
 		if hitbox.name == &"Hitbox":
 			hitbox.hit(4.0)
+	
+	used.emit(next_gun_index)
 
 func _physics_process(delta: float) -> void:
 	current_cooldown -= delta

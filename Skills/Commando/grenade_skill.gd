@@ -1,5 +1,7 @@
 extends Node
 
+signal used
+
 @export var nade_scene: PackedScene
 @export var skill_cooldown = 1.0
 
@@ -20,3 +22,4 @@ func use():
 	new_nade.global_position = cam.global_position
 	new_nade.linear_velocity = player.velocity + (-cam.basis.z.normalized() * 15.0)
 	current_cooldown = skill_cooldown
+	used.emit()

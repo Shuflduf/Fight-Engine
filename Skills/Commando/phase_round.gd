@@ -1,5 +1,7 @@
 extends Node
 
+signal used
+
 @export var phase_round_projectile: PackedScene
 @export var double_tap: Node3D
 @export var use_cooldown = 1.0
@@ -71,3 +73,4 @@ func release():
 		tween.tween_property(gun, ^"transform", double_tap.og_gun_transforms[i], 0.3).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC)
 
 	double_tap.current_cooldown = 0.0
+	used.emit()
