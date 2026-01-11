@@ -26,3 +26,4 @@ func _physics_process(_delta: float) -> void:
 	
 	skin.visible = get_viewport().get_camera_3d() != cam
 	skin.rotation.y = cam.rotation.y + PI
+	skin.set_spine_angle(-cam.rotation.x)
