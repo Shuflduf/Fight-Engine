@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cnveompyv8nf"]
 
 [ext_resource type="PackedScene" uid="uid://cmcok53rej5sy" path="res://entity.tscn" id="1_4flbx"]
+[ext_resource type="PackedScene" uid="uid://dlbv8hoavv3lp" path="res://Characters/commando_rig.tscn" id="2_nvl01"]
 [ext_resource type="Script" uid="uid://chmr6w7f8yykk" path="res://Camera/camera_system_manager.gd" id="2_onrkg"]
 [ext_resource type="Script" uid="uid://bjfwewfpcvxcm" path="res://Camera/mouse_system.gd" id="4_hqtel"]
 [ext_resource type="Script" uid="uid://b78j5vtu0kl5i" path="res://Camera/camera_offset.gd" id="5_1jxqw"]
@@ -10,7 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://c2pbtdi5r7367" path="res://Skills/Commando/tactical_slide.tscn" id="6_nvl01"]
 [ext_resource type="PackedScene" uid="uid://bqn60kr4ecdy6" path="res://Skills/Commando/phase_round.tscn" id="7_ivps1"]
 [ext_resource type="PackedScene" uid="uid://bnhkfym5al36a" path="res://Skills/Commando/grenade_skill.tscn" id="8_urp6f"]
-[ext_resource type="PackedScene" uid="uid://dwuwxr4xw23hu" path="res://Assets/3D/commando.glb" id="11_nvl01"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_n7ghd"]
 top_radius = 0.3
@@ -18,8 +18,8 @@ bottom_radius = 0.3
 
 [node name="Player" unique_id=1807276841 instance=ExtResource("1_4flbx")]
 
-[node name="Skin" parent="." index="0" unique_id=835656634 instance=ExtResource("11_nvl01")]
-transform = Transform3D(-0.99999994, 0, 1.1920929e-07, 0, 1, 0, -1.1920929e-07, 0, -0.99999994, 0, -1, 0)
+[node name="Skin" parent="." index="0" unique_id=486238766 instance=ExtResource("2_nvl01")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 
 [node name="MeshInstance3D" parent="." index="2" unique_id=214712984]
 visible = false
