@@ -36,5 +36,7 @@ func use():
 		player.velocity = boost_dir * speed
 		player.velocity.y = min(speed, 8.0)
 		slide_initiated = false
+		
 	used.emit()
+	cooldown_started.emit()
 	

@@ -23,3 +23,4 @@ func use():
 	new_nade.linear_velocity = player.velocity + (-cam.basis.z.normalized() * 15.0)
 	current_cooldown = info.cooldown
 	used.emit()
+	cooldown_started.emit()

@@ -75,3 +75,4 @@ func release():
 	double_tap.enabled = true
 	double_tap.current_cooldown = double_tap.info.cooldown
 	used.emit(false)
+	cooldown_started.emit()

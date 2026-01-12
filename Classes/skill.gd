@@ -5,6 +5,8 @@ extends Node
 # signal used
 
 signal enabled_changed
+@warning_ignore("unused_signal")
+signal cooldown_started
 
 enum SkillSlot {
 	PRIMARY,

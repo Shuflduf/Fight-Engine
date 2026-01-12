@@ -11,7 +11,7 @@ point_count = 4
 [sub_resource type="Resource" id="Resource_sfp1g"]
 script = ExtResource("2_2wfe4")
 skill_name = "Tactical Slide"
-cooldown = 1.0
+cooldown = 4.0
 description = "mmnm big jump"
 metadata/_custom_type_script = "uid://j2byq4temsrs"
 

@@ -39,6 +39,7 @@ func use():
 			hitbox.hit(4.0)
 	
 	used.emit(next_gun_index)
+	cooldown_started.emit()
 
 func _physics_process(delta: float) -> void:
 	current_cooldown -= delta
