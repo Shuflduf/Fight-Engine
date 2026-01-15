@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://ddggysc5ffsoo"]
 
 [ext_resource type="Script" uid="uid://cpa2g1ho1vpxp" path="res://Skills/Chef/dice_projectile.gd" id="1_ew4ln"]
-[ext_resource type="PackedScene" uid="uid://b7xsfsac7sbex" path="res://Assets/3D/cleaver.glb" id="1_otab8"]
+[ext_resource type="PackedScene" uid="uid://cdkf0ys4ox4lr" path="res://Characters/cleaver.tscn" id="2_ew4ln"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ew4ln"]
 
@@ -9,8 +9,8 @@
 top_level = true
 script = ExtResource("1_ew4ln")
 
-[node name="cleaver" parent="." unique_id=1685095157 instance=ExtResource("1_otab8")]
-transform = Transform3D(0.9793712, 0, -0.20206943, -0.20206943, -4.371139e-08, -0.9793712, -8.832735e-09, 1, -4.2809674e-08, 0, 0.07008749, -0.07268332)
+[node name="Cleaver" parent="." unique_id=1685095157 instance=ExtResource("2_ew4ln")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
 
 [node name="Collision" type="Area3D" parent="." unique_id=936910924]
 collision_layer = 0

@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://cyna2mbrxrcqv"]
 
-[ext_resource type="PackedScene" uid="uid://b7xsfsac7sbex" path="res://Assets/3D/cleaver.glb" id="1_abfgf"]
 [ext_resource type="Script" uid="uid://idsduysfl1lu" path="res://Skills/Chef/dice.gd" id="1_dgyjc"]
 [ext_resource type="PackedScene" uid="uid://ddggysc5ffsoo" path="res://Skills/Chef/dice_projectile.tscn" id="2_chbxf"]
 [ext_resource type="Script" uid="uid://dfjixm86uiam3" path="res://Skills/follow_camera.gd" id="2_dgyjc"]
 [ext_resource type="Script" uid="uid://j2byq4temsrs" path="res://Classes/skill_info.gd" id="2_jmdqv"]
+[ext_resource type="PackedScene" uid="uid://cdkf0ys4ox4lr" path="res://Characters/cleaver.tscn" id="5_chbxf"]
 
 [sub_resource type="Resource" id="Resource_chbxf"]
 script = ExtResource("2_jmdqv")
@@ -19,9 +19,9 @@ info = SubResource("Resource_chbxf")
 
 [node name="FollowCamera" type="Node" parent="." unique_id=1942022677]
 script = ExtResource("2_dgyjc")
-offset = Vector3(0.68, -0.15, -0.51)
+offset = Vector3(0.76, -0.15, -0.51)
 
 [node name="Model" type="Node3D" parent="." unique_id=1781352493]
 
-[node name="Cleaver" parent="Model" unique_id=1685095157 instance=ExtResource("1_abfgf")]
-transform = Transform3D(0.6732836, 0, 0.7393845, 0, 1, 0, -0.7393845, 0, 0.6732836, -0.07012236, 0, 0.03646362)
+[node name="Cleaver" parent="Model" unique_id=1685095157 instance=ExtResource("5_chbxf")]
+transform = Transform3D(0.42261824, 0, 0.9063078, 0, 1, 0, -0.9063078, 0, 0.42261824, 0.0004556775, 0, -0.00020161644)

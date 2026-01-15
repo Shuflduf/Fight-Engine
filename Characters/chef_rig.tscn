@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://cerduindsrq4"]
 
 [ext_resource type="PackedScene" uid="uid://c43v7ki3crjce" path="res://Assets/3D/chef.glb" id="1_8uqnm"]
-[ext_resource type="PackedScene" uid="uid://b7xsfsac7sbex" path="res://Assets/3D/cleaver.glb" id="2_6djfi"]
 [ext_resource type="Script" uid="uid://d03s6jlpks5ea" path="res://Characters/chef_rig.gd" id="2_cf1ap"]
+[ext_resource type="PackedScene" uid="uid://cdkf0ys4ox4lr" path="res://Characters/cleaver.tscn" id="4_oogy1"]
 
 [node name="ChefRig" unique_id=2092065129 node_paths=PackedStringArray("hand_handles", "skeleton") instance=ExtResource("1_8uqnm")]
 script = ExtResource("2_cf1ap")
@@ -14,6 +14,7 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0
 
 [node name="JacobianIK3D" type="JacobianIK3D" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(1593193233) index="0" unique_id=1333935107]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, -0.87246644, 0)
+active = false
 max_iterations = 100
 deterministic = true
 setting_count = 1
@@ -37,14 +38,11 @@ settings/0/joints/2/limitation = null
 settings/0/joints/3/rotation_axis = 3
 settings/0/joints/3/limitation = null
 
-[node name="shoulder_R_003" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(1593193233) index="1" unique_id=1398605683]
-transform = Transform3D(0.23848134, 0.79121137, 0.56312644, 0.7276113, 0.23847446, -0.64320433, -0.64320177, 0.56312937, -0.5188225, -0.18188798, 0.72843605, 0.6964475)
+[node name="Cleaver" parent="Armature/Skeleton3D/shoulder_R_003" parent_id_path=PackedInt32Array(1398605683) index="2" unique_id=1685095157 instance=ExtResource("4_oogy1")]
+transform = Transform3D(-6.635102e-14, 1, -7.5896736e-07, 1.0000001, 3.1814245e-16, -8.742279e-08, -8.742278e-08, -7.5896736e-07, -1, 0.13264024, 0.2872529, 0.0701803)
 
-[node name="cleaver" parent="Armature/Skeleton3D/shoulder_R_003" index="2" unique_id=1685095157 instance=ExtResource("2_6djfi")]
-transform = Transform3D(-6.635102e-14, 1, -7.5896725e-07, 1.0000001, 3.181456e-16, -8.742279e-08, -8.742278e-08, -7.5896725e-07, -1, 0.13264012, 0.28725266, 0.17141996)
-
-[node name="cleaver" parent="Armature/Skeleton3D/shoulder_L_003" parent_id_path=PackedInt32Array(713617998) index="2" unique_id=1786911349 instance=ExtResource("2_6djfi")]
-transform = Transform3D(-4.3711392e-08, -1, -4.5474735e-13, 1.0000001, -4.371139e-08, 0, 0, -4.5474735e-13, 1, -0.13230729, 0.24651015, -0.014932289)
+[node name="Cleaver" parent="Armature/Skeleton3D/shoulder_L_003" parent_id_path=PackedInt32Array(713617998) index="2" unique_id=1695446571 instance=ExtResource("4_oogy1")]
+transform = Transform3D(-4.3710813e-08, -1, -8.463903e-07, 1, -4.371138e-08, 6.7154474e-07, -6.715444e-07, -8.463903e-07, 1, -0.13226783, 0.26228082, 0.059546497)
 
 [node name="RightHand" type="Marker3D" parent="Armature/Skeleton3D/Bone" parent_id_path=PackedInt32Array(577948154) index="0" unique_id=1028244744]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -0.18094546, 0.7268791, 0.66878676)
