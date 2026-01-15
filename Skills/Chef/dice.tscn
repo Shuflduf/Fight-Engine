@@ -17,9 +17,11 @@ script = ExtResource("1_dgyjc")
 projectile = ExtResource("2_chbxf")
 info = SubResource("Resource_chbxf")
 
-[node name="cleaver" parent="." unique_id=1685095157 instance=ExtResource("1_abfgf")]
-transform = Transform3D(0.6732836, 0, 0.7393845, 0, 1, 0, -0.7393845, 0, 0.6732836, -0.07012236, 0, 0.03646362)
-
 [node name="FollowCamera" type="Node" parent="." unique_id=1942022677]
 script = ExtResource("2_dgyjc")
 offset = Vector3(0.68, -0.15, -0.51)
+
+[node name="Model" type="Node3D" parent="." unique_id=1781352493]
+
+[node name="Cleaver" parent="Model" unique_id=1685095157 instance=ExtResource("1_abfgf")]
+transform = Transform3D(0.6732836, 0, 0.7393845, 0, 1, 0, -0.7393845, 0, 0.6732836, -0.07012236, 0, 0.03646362)
