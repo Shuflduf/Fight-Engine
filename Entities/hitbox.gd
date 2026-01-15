@@ -1,5 +1,7 @@
 extends Area3D
 
+@onready var player_owner: Node3D = get_parent()
+
 func hit(damage: float):
 	var new_damage_text: Label3D = $BaseText.duplicate()
 	get_tree().root.add_child(new_damage_text)

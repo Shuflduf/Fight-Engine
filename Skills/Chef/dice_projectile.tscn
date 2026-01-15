@@ -19,4 +19,17 @@ input_ray_pickable = false
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Collision" unique_id=1044090472]
 shape = SubResource("SphereShape3D_ew4ln")
 
+[node name="Hurtbox" type="Area3D" parent="." unique_id=1754689664]
+collision_layer = 8
+collision_mask = 4
+input_ray_pickable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox" unique_id=1590332196]
+shape = SubResource("SphereShape3D_ew4ln")
+
+[node name="DamageCooldown" type="Timer" parent="." unique_id=2146654316]
+wait_time = 0.4
+
 [connection signal="body_entered" from="Collision" to="." method="_on_collision_body_entered"]
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
+[connection signal="timeout" from="DamageCooldown" to="." method="_on_damage_cooldown_timeout"]

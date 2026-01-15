@@ -9,6 +9,7 @@ extends Node3D
 @onready var player: CharacterBody3D = get_parent()
 
 func _ready() -> void:
+	#print(player)
 	var target_skill = skill_list.get(Skill.SkillSlot.SPECIAL)
 	if target_skill and special_pickups_enabled:
 		target_skill.enabled = false
@@ -41,7 +42,6 @@ func give_special():
 		target_skill.enabled = true
 		target_skill.cooldown = 0.0
 		
-
 
 #func _ready() -> void:
 	#for weapon in get_children():

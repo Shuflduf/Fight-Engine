@@ -7,8 +7,10 @@ extends Skill
 var current_cooldown = 0.0
 var active_cleavers: Array[Node3D]
 
+@onready var player: CharacterBody3D = get_parent().player
 @onready var cam: Camera3D = get_parent().cam
 @onready var model: Node3D = $Model
+
 #@onready var model_rot = model.rotation.x
 
 func use():
@@ -21,7 +23,8 @@ func use():
 	if active_cleavers.size() < cleaver_count:
 		var new_cleaver: Node3D = projectile.instantiate()
 		new_cleaver.target_position = cam.global_position + (-cam.global_transform.basis.z * throw_dist)
-		new_cleaver.player = cam
+		new_cleaver.player_owner = get_parent().player
+		new_cleaver.go_back_target = cam
 		new_cleaver.delete.connect(func(): active_cleavers.erase(new_cleaver))
 		get_tree().root.add_child(new_cleaver)
 		new_cleaver.global_position = cam.global_position
