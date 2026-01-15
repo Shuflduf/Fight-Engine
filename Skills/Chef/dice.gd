@@ -1,7 +1,7 @@
 extends Skill
 
 @export var projectile: PackedScene
-
+@export var throw_dist = 10.0
 var current_cooldown = 0.0
 var active_cleavers: Array[Node3D]
 
@@ -15,7 +15,7 @@ func use():
 		return
 		
 	var new_cleaver: Node3D = projectile.instantiate()
-	new_cleaver.target_position = cam.global_position + (-cam.global_transform.basis.z * 15.0)
+	new_cleaver.target_position = cam.global_position + (-cam.global_transform.basis.z * throw_dist)
 	new_cleaver.player = cam
 	new_cleaver.delete.connect(func(): active_cleavers.erase(new_cleaver))
 	get_tree().root.add_child(new_cleaver)

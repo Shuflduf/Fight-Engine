@@ -189,6 +189,7 @@ metadata/_custom_type_script = "uid://cwu5cf7a0awcd"
 collision_mask = 0
 
 [node name="entity_0_mesh_instance" type="MeshInstance3D" parent="Map/entity_0_worldspawn" unique_id=1434004554]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.015369415, 0.048071384, -0.017772675)
 mesh = SubResource("ArrayMesh_ic0uy")
 
 [node name="entity_0_brush_0_collision_shape" type="CollisionShape3D" parent="Map/entity_0_worldspawn" unique_id=1783508450]
