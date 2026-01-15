@@ -1,12 +1,10 @@
 [gd_scene format=3 uid="uid://dx7eh772ytj0b"]
 
-[ext_resource type="Script" uid="uid://5ipivmpdo7yb" path="res://Classes/bundle.gd" id="1_6fih4"]
 [ext_resource type="PackedScene" uid="uid://74qf12w4v0kl" path="res://UI/HUD/hud.tscn" id="2_1tmi8"]
 [ext_resource type="Script" uid="uid://chmr6w7f8yykk" path="res://Camera/camera_system_manager.gd" id="2_uvxjm"]
 [ext_resource type="Script" uid="uid://bhlpfny8uqeu8" path="res://Entities/rocket_jump.gd" id="3_bqhgn"]
 [ext_resource type="Script" uid="uid://bjfwewfpcvxcm" path="res://Camera/mouse_system.gd" id="3_l0aat"]
 [ext_resource type="Script" uid="uid://bxs1a8jmo002p" path="res://Entities/player_controller.gd" id="4_0yle1"]
-[ext_resource type="Script" uid="uid://c7k0xr8eeyt5a" path="res://Camera/camera_system.gd" id="4_uoaoi"]
 [ext_resource type="PackedScene" uid="uid://i8x84sh2p2q4" path="res://Entities/skill_system.tscn" id="5_xk08s"]
 [ext_resource type="Script" uid="uid://jbebb4hi27xp" path="res://Entities/stair_handler.gd" id="10_an4eu"]
 
@@ -14,8 +12,6 @@
 length = 0.4
 
 [node name="Bundle" type="Node" unique_id=180519784]
-script = ExtResource("1_6fih4")
-metadata/_custom_type_script = "uid://5ipivmpdo7yb"
 
 [node name="Camera" type="Camera3D" parent="." unique_id=1997856217]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
@@ -26,13 +22,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
 script = ExtResource("2_uvxjm")
 cam = NodePath("../Camera")
 
-[node name="Mouse" type="Node" parent="CameraSystems" unique_id=1697354133 node_paths=PackedStringArray("player")]
+[node name="Mouse" type="Node" parent="CameraSystems" unique_id=1697354133]
 script = ExtResource("3_l0aat")
-player = NodePath("")
-
-[node name="TacticalSlide" type="Node" parent="CameraSystems" unique_id=523597135]
-script = ExtResource("4_uoaoi")
-metadata/_custom_type_script = "uid://c7k0xr8eeyt5a"
 
 [node name="SkillSystem" parent="." unique_id=1590952291 instance=ExtResource("5_xk08s")]
 
