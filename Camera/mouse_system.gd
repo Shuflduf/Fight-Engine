@@ -2,6 +2,7 @@ extends CameraSystem
 
 const MOUSE_SENS_MULTIPLIER = 0.001
 
+@export var player: CharacterBody3D
 @export var third_person: bool
 @export var mouse_sens = 0.8
 @export var third_person_pos: Marker3D
@@ -18,7 +19,7 @@ func _unhandled_key_input(event: InputEvent) -> void:
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		var mouse_movement = -event.screen_relative * actual_mouse_sens
-		rotation_offset.y += mouse_movement.x
+		player.rotation.y += mouse_movement.x
 		rotation_offset.x += mouse_movement.y
 		rotation_offset.x = clamp(rotation_offset.x, -PI / 2.0, PI / 2.0)
 		

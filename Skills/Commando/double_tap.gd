@@ -6,12 +6,13 @@ signal used(gun_index: int)
 @export var guns: Array[Node3D]
 @export var kick_strength_deg = 20.0
 @export var kick_strength_m = 0.05
+@export var hitscan: RayCast3D
 
 var current_cooldown = 0.0
 var next_gun_index = 0
 
-@onready var hitscan: RayCast3D = get_parent().ray
 @onready var og_gun_transforms: Array = guns.map(func(gun): return gun.transform)
+@onready var cam: Camera3D = get_parent().cam
 
 func use():
 	if current_cooldown > 0.0:
@@ -43,3 +44,5 @@ func use():
 
 func _physics_process(delta: float) -> void:
 	current_cooldown -= delta
+	hitscan.global_position = cam.global_position
+	

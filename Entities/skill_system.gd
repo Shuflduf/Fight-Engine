@@ -1,6 +1,6 @@
 extends Node3D
 
-@export var special_pickups_enabled = true
+@export var special_pickups_enabled = false
 
 @export var cam: Camera3D
 @export var ray: RayCast3D

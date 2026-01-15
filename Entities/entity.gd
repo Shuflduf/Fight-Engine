@@ -3,7 +3,7 @@ extends CharacterBody3D
 @warning_ignore("unused_signal")
 signal jumped
 
-@onready var cam: Camera3D = %Camera
+#@onready var cam: Camera3D = %Camera
 
 #const SPEED = 8.0
 #const JUMP_VELOCITY = 7.0

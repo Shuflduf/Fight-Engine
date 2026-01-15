@@ -1,0 +1,117 @@
+[gd_scene format=3 uid="uid://cagug61g68di1"]
+
+[ext_resource type="PackedScene" uid="uid://cmcok53rej5sy" path="res://Entities/entity.tscn" id="1_ivr2x"]
+[ext_resource type="PackedScene" uid="uid://i8x84sh2p2q4" path="res://Entities/skill_system.tscn" id="2_4p2me"]
+[ext_resource type="Script" uid="uid://chmr6w7f8yykk" path="res://Camera/camera_system_manager.gd" id="2_nattx"]
+[ext_resource type="Script" uid="uid://jbebb4hi27xp" path="res://Entities/stair_handler.gd" id="3_imxwh"]
+[ext_resource type="Script" uid="uid://bjfwewfpcvxcm" path="res://Camera/mouse_system.gd" id="3_ns4yp"]
+[ext_resource type="PackedScene" uid="uid://d1k5aq2qsihu1" path="res://Skills/Commando/double_tap.tscn" id="5_dvany"]
+[ext_resource type="PackedScene" uid="uid://bqn60kr4ecdy6" path="res://Skills/Commando/phase_round.tscn" id="6_ve738"]
+[ext_resource type="PackedScene" uid="uid://c2pbtdi5r7367" path="res://Skills/Commando/tactical_slide.tscn" id="7_6v6c3"]
+[ext_resource type="PackedScene" uid="uid://bnhkfym5al36a" path="res://Skills/Commando/grenade_skill.tscn" id="8_uq5ye"]
+[ext_resource type="PackedScene" uid="uid://dlbv8hoavv3lp" path="res://Characters/commando_rig.tscn" id="9_gkpk8"]
+[ext_resource type="PackedScene" uid="uid://74qf12w4v0kl" path="res://UI/HUD/hud.tscn" id="10_aafxt"]
+[ext_resource type="Script" uid="uid://c7k0xr8eeyt5a" path="res://Camera/camera_system.gd" id="10_ns4yp"]
+[ext_resource type="Script" uid="uid://bhlpfny8uqeu8" path="res://Entities/rocket_jump.gd" id="11_nfo1a"]
+[ext_resource type="Script" uid="uid://bxs1a8jmo002p" path="res://Entities/player_controller.gd" id="12_yqxnw"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_n7ghd"]
+top_radius = 0.3
+bottom_radius = 0.3
+
+[sub_resource type="SeparationRayShape3D" id="SeparationRayShape3D_0ba7l"]
+length = 0.4
+
+[node name="Player" unique_id=1807276841 instance=ExtResource("1_ivr2x")]
+
+[node name="TestMesh" parent="." index="1" unique_id=214712984]
+visible = false
+mesh = SubResource("CylinderMesh_n7ghd")
+
+[node name="Camera" type="Camera3D" parent="." index="3" unique_id=491931993]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+fov = 100.0
+
+[node name="CameraSystems" type="Node3D" parent="." index="4" unique_id=672014216 node_paths=PackedStringArray("cam")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
+script = ExtResource("2_nattx")
+cam = NodePath("../Camera")
+
+[node name="Mouse" type="Node" parent="CameraSystems" index="0" unique_id=278154113 node_paths=PackedStringArray("player")]
+script = ExtResource("3_ns4yp")
+player = NodePath("../..")
+
+[node name="TacticalSlide" type="Node" parent="CameraSystems" index="1" unique_id=1287877165]
+script = ExtResource("10_ns4yp")
+metadata/_custom_type_script = "uid://c7k0xr8eeyt5a"
+
+[node name="SkillSystem" parent="." index="5" unique_id=1590952291 node_paths=PackedStringArray("cam", "player", "cam_systems", "skill_list") instance=ExtResource("2_4p2me")]
+cam = NodePath("../Camera")
+player = NodePath("..")
+cam_systems = NodePath("../CameraSystems")
+skill_list = {
+0: NodePath("DoubleTap"),
+1: NodePath("PhaseRound"),
+2: NodePath("TacticalSlide"),
+3: NodePath("GrenadeSkill")
+}
+
+[node name="DoubleTap" parent="SkillSystem" index="0" unique_id=1077974154 instance=ExtResource("5_dvany")]
+
+[node name="PhaseRound" parent="SkillSystem" index="1" unique_id=1011272410 node_paths=PackedStringArray("double_tap") instance=ExtResource("6_ve738")]
+double_tap = NodePath("../DoubleTap")
+
+[node name="TacticalSlide" parent="SkillSystem" index="2" unique_id=1071647213 instance=ExtResource("7_6v6c3")]
+
+[node name="GrenadeSkill" parent="SkillSystem" index="3" unique_id=701401869 instance=ExtResource("8_uq5ye")]
+
+[node name="StairHandler" type="Node3D" parent="." index="6" unique_id=1065891164]
+script = ExtResource("3_imxwh")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StairHandler" index="0" unique_id=1170601374]
+transform = Transform3D(0.70710677, 0.70710677, -3.090862e-08, 0, -4.371139e-08, -1, -0.70710677, 0.70710677, -3.090862e-08, 0.6540738, -0.6, 0.6290738)
+shape = SubResource("SeparationRayShape3D_0ba7l")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="StairHandler" index="1" unique_id=602372856]
+transform = Transform3D(0.70710677, 0.70710677, -3.090862e-08, 0, -4.371139e-08, -1, -0.70710677, 0.70710677, -3.090862e-08, 0.72478443, -0.6, -0.7144291)
+shape = SubResource("SeparationRayShape3D_0ba7l")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="StairHandler" index="2" unique_id=190161561]
+transform = Transform3D(0.70710677, 0.70710677, -3.090862e-08, 0, -4.371139e-08, -1, -0.70710677, 0.70710677, -3.090862e-08, -0.6894291, -0.6, -0.7144291)
+shape = SubResource("SeparationRayShape3D_0ba7l")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="StairHandler" index="3" unique_id=1733095321]
+transform = Transform3D(0.70710677, 0.70710677, -3.090862e-08, 0, -4.371139e-08, -1, -0.70710677, 0.70710677, -3.090862e-08, -0.6894291, -0.6, 0.69978446)
+shape = SubResource("SeparationRayShape3D_0ba7l")
+
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="StairHandler" index="4" unique_id=468190592]
+transform = Transform3D(0, 0.99999994, -4.371139e-08, 0, -4.371138e-08, -1, -0.99999994, 0, -3.5527137e-15, 0.925, -0.6, -0.024999976)
+shape = SubResource("SeparationRayShape3D_0ba7l")
+
+[node name="CollisionShape3D7" type="CollisionShape3D" parent="StairHandler" index="5" unique_id=134553768]
+transform = Transform3D(0, 0.99999994, -4.371139e-08, 0, -4.371138e-08, -1, -0.99999994, 0, -3.5527137e-15, 0.025000006, -0.6, -1.025)
+shape = SubResource("SeparationRayShape3D_0ba7l")
+
+[node name="CollisionShape3D8" type="CollisionShape3D" parent="StairHandler" index="6" unique_id=1860888547]
+transform = Transform3D(0, 0.99999994, -4.371139e-08, 0, -4.371138e-08, -1, -0.99999994, 0, -3.5527137e-15, -0.97499996, -0.6, -0.024999976)
+shape = SubResource("SeparationRayShape3D_0ba7l")
+
+[node name="CollisionShape3D9" type="CollisionShape3D" parent="StairHandler" index="7" unique_id=575115329]
+transform = Transform3D(0, 0.99999994, -4.371139e-08, 0, -4.371138e-08, -1, -0.99999994, 0, -3.5527137e-15, 0.025000006, -0.6, 0.975)
+shape = SubResource("SeparationRayShape3D_0ba7l")
+
+[node name="Skin" parent="." index="7" unique_id=486238766 instance=ExtResource("9_gkpk8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="HUD" parent="." index="8" unique_id=545074785 instance=ExtResource("10_aafxt")]
+
+[node name="RocketJump" type="Node" parent="." index="9" unique_id=1195640900]
+script = ExtResource("11_nfo1a")
+
+[node name="PlayerController" type="Node" parent="." index="10" unique_id=884207362 node_paths=PackedStringArray("cam", "skills", "cam_systems", "hud", "skin")]
+script = ExtResource("12_yqxnw")
+cam = NodePath("../Camera")
+skills = NodePath("../SkillSystem")
+cam_systems = NodePath("../CameraSystems")
+hud = NodePath("../HUD")
+skin = NodePath("../Skin")

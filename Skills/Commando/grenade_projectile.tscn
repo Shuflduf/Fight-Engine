@@ -15,7 +15,7 @@ radius = 3.0
 
 [node name="RigidBody3D" type="RigidBody3D" unique_id=1101875099]
 top_level = true
-collision_layer = 4
+collision_layer = 0
 collision_mask = 9
 physics_material_override = SubResource("PhysicsMaterial_3qp86")
 continuous_cd = true

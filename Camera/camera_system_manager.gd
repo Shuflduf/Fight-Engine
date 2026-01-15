@@ -1,9 +1,8 @@
 class_name CameraSystemManager
 extends Node
 
-@onready var default_cam_transform = cam.transform
-
 @export var cam: Camera3D
+@onready var default_cam_transform = cam.transform
 
 func _process(_delta: float) -> void:
 	cam.position = default_cam_transform.origin
