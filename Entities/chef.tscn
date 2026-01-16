@@ -17,7 +17,6 @@
 length = 0.4
 
 [node name="Chef" unique_id=1807276841 instance=ExtResource("1_7eqma")]
-safe_margin = 0.02
 
 [node name="TestMesh" parent="." index="1" unique_id=214712984]
 visible = false
