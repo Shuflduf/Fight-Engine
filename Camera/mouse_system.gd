@@ -1,5 +1,7 @@
 extends CameraSystem
 
+signal screen_move(dist: Vector2)
+
 const MOUSE_SENS_MULTIPLIER = 0.001
 
 @export var player: CharacterBody3D
@@ -22,6 +24,7 @@ func _input(event: InputEvent) -> void:
 		player.rotation.y += mouse_movement.x
 		rotation_offset.x += mouse_movement.y
 		rotation_offset.x = clamp(rotation_offset.x, -PI / 2.0, PI / 2.0)
+		screen_move.emit(mouse_movement)
 		
 		if third_person:
 			position_offset = third_person_pos.position.rotated(Vector3.UP, rotation_offset.y)

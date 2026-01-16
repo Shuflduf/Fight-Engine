@@ -6,7 +6,7 @@
 [sub_resource type="Resource" id="Resource_d7w4j"]
 script = ExtResource("2_phdxp")
 skill_name = "Roll"
-cooldown = 8.0
+cooldown = 4.0
 metadata/_custom_type_script = "uid://j2byq4temsrs"
 
 [node name="Roll" type="Node" unique_id=1856380844]

@@ -3,7 +3,7 @@ extends Node3D
 @export var special_pickups_enabled = false
 
 @export var cam: Camera3D
-@export var cam_systems: Node
+@export var cam_systems: CameraSystemManager
 @export var skill_list: Dictionary[Skill.SkillSlot, Skill]
 @export var player: CharacterBody3D
 
