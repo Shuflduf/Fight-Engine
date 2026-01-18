@@ -7,12 +7,11 @@ signal used(started: bool)
 
 var current_cooldown = 0.0
 var hold_duration = 0.0
+var held_down = false
+var use_called_this_frame = false
 
 @onready var player: CharacterBody3D = get_parent().player
 @onready var cam: Camera3D = get_parent().cam
-
-var held_down = false
-var use_called_this_frame = false
 
 
 func _physics_process(delta: float) -> void:

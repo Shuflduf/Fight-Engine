@@ -1,10 +1,10 @@
 extends Control
 
+var enabled = true
+
 @onready var timer: Timer = $Timer
 @onready var progress_bar: ProgressBar = $ProgressBar
 @onready var countdown: Label = $Countdown
-
-var enabled = true
 
 
 func create(info: SkillInfo):

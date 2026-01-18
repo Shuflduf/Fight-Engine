@@ -4,15 +4,15 @@ signal used
 
 @export var dip_curve: Curve
 
+var current_cooldown = 0.0
+var slide_initiated = false
+
 @onready var player: CharacterBody3D = get_parent().player
 @onready var cam_offset: CameraSystem = (
 	get_parent().cam_systems.get_node_or_null(^"TacticalSlide")
 	if get_parent().cam_systems
 	else null
 )
-
-var current_cooldown = 0.0
-var slide_initiated = false
 
 
 func _physics_process(delta: float) -> void:

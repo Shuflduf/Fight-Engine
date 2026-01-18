@@ -5,10 +5,10 @@ signal used
 @export var skill_name: String
 @export var nade_scene: PackedScene
 
+var cooldown = 0.0
+
 @onready var cam: Camera3D = get_parent().cam
 @onready var player: CharacterBody3D = get_parent().player
-
-var cooldown = 0.0
 
 
 func _physics_process(delta: float) -> void:

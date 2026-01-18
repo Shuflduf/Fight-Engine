@@ -1,9 +1,9 @@
 extends Node3D
 
-@onready var player: CharacterBody3D = get_parent()
-
 var last_player_vel = Vector3.ZERO
 var rays: Array[CollisionShape3D]
+
+@onready var player: CharacterBody3D = get_parent()
 
 
 func _ready() -> void:

@@ -2,10 +2,10 @@ extends Node3D
 
 @export var rocket_speed = 30.0
 
+var explosion_queued = false
+
 @onready var explode_particles: GPUParticles3D = $ExplodeParticles
 @onready var blast_radius: Area3D = $BlastRadius
-
-var explosion_queued = false
 
 
 func _physics_process(delta: float) -> void:

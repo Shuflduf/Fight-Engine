@@ -1,9 +1,9 @@
 extends CameraSystem
 
-@export var player: CharacterBody3D
-
 const VERTICAL_SWAY_SPEED = 12.0
 const HORIZONTAL_SWAY_SPEED = 6.0
+
+@export var player: CharacterBody3D
 
 var sway_progress = 0.0
 
