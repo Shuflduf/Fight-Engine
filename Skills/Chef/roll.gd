@@ -1,5 +1,6 @@
 extends Skill
 
+signal revert_abilities
 signal used
 
 @export var skill_duration = 2.0
@@ -12,6 +13,7 @@ var current_direction = Vector3.ZERO
 var movement_speed = 0.0
 var elapsed_duration = 0.0
 var used_jump = false
+var boosted = false
 
 @onready var player: CharacterBody3D = get_parent().player
 @onready var cam_systems: CameraSystemManager = get_parent().cam_systems
@@ -60,7 +62,7 @@ func calculate_speed(base_speed: float):
 
 
 func _on_hurtbox_area_entered(hitbox: Area3D) -> void:
-	if hitbox.player_owner == player:
+	if hitbox.player_owner == player or not active:
 		return
 	hitbox.hit(8)
 	var knockback_vec = Utils.flatten_vec(
