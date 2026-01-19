@@ -30,7 +30,7 @@ direction = Vector3(0, 0, -1)
 spread = 10.0
 initial_velocity_min = 20.0
 initial_velocity_max = 30.0
-gravity = Vector3(0, 0, 0)
+gravity = Vector3(0, 10, 0)
 damping_min = 30.000002
 damping_max = 30.000002
 scale_min = 0.29999998
@@ -58,14 +58,13 @@ gradient = SubResource("Gradient_0j1if")
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_xnxn5"]
 lifetime_randomness = 1.0
 direction = Vector3(0, 0, -1)
-spread = 30.0
-initial_velocity_min = 20.0
-initial_velocity_max = 40.0
-gravity = Vector3(0, 0, 0)
+spread = 10.0
+initial_velocity_min = 40.0
+initial_velocity_max = 60.0
+gravity = Vector3(0, 20, 0)
 damping_min = 30.000002
 damping_max = 30.000002
-scale_min = 0.29999998
-scale_max = 0.7
+scale_min = 0.39999998
 scale_curve = SubResource("CurveTexture_5itwv")
 color_ramp = SubResource("GradientTexture1D_5itwv")
 
@@ -74,11 +73,11 @@ height = 6.0
 radius = 0.8
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_0j1if"]
-height = 1.9
+height = 4.65
 radius = 1.1
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_xnxn5"]
-height = 1.7750003
+height = 4.7875004
 radius = 1.4
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_ba8l5"]
@@ -90,7 +89,7 @@ script = ExtResource("1_tsylo")
 info = SubResource("Resource_5itwv")
 
 [node name="Particles" type="GPUParticles3D" parent="." unique_id=1882408000]
-visible = false
+emitting = false
 amount = 128
 lifetime = 0.4
 fixed_fps = 60
@@ -98,7 +97,7 @@ process_material = SubResource("ParticleProcessMaterial_tsylo")
 draw_pass_1 = SubResource("SphereMesh_0j1if")
 
 [node name="BoostParticles" type="GPUParticles3D" parent="." unique_id=463043407]
-visible = false
+emitting = false
 amount = 256
 lifetime = 0.4
 fixed_fps = 60
@@ -125,15 +124,15 @@ collision_mask = 4
 monitorable = false
 
 [node name="Boost" type="CollisionShape3D" parent="BoostHurtbox" unique_id=1860894210]
-transform = Transform3D(1, 0, 0, 0, 0, 1.0000001, 0, -1.0000001, 0, 0, 0, -0.9499998)
+transform = Transform3D(1, 0, 0, 0, 0, 1.0000001, 0, -1.0000001, 0, 0, 0, -2.3249998)
 shape = SubResource("CylinderShape3D_0j1if")
 
 [node name="Boost2" type="CollisionShape3D" parent="BoostHurtbox" unique_id=1545385329]
-transform = Transform3D(1, 0, 0, 0, 0, 1.0000001, 0, -1.0000001, 0, 0, 0, -2.7374992)
+transform = Transform3D(1, 0, 0, 0, 0, 1.0000001, 0, -1.0000001, 0, 0, 0, -6.98151)
 shape = SubResource("CylinderShape3D_xnxn5")
 
 [node name="Boost3" type="CollisionShape3D" parent="BoostHurtbox" unique_id=1969165693]
-transform = Transform3D(1, 0, 0, 0, 0, 1.0000001, 0, -1.0000001, 0, 0, 0, -5.76875)
+transform = Transform3D(1, 0, 0, 0, 0, 1.0000001, 0, -1.0000001, 0, 0, 0, -11.519011)
 shape = SubResource("CylinderShape3D_ba8l5")
 
 [node name="ActiveTimer" type="Timer" parent="." unique_id=371748895]

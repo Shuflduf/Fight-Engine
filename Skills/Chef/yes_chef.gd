@@ -19,12 +19,16 @@ func use():
 	for skill in boostable_skills:
 		skill.boosted = true
 
-	cooldown = info.cooldown
-	cooldown_started.emit()
+	cooldown = INF
+
 	used.emit()
+	enabled = false
 
 
 func disable_funnies():
+	enabled = true
+	cooldown_started.emit()
+	cooldown = info.cooldown
 	for skill in boostable_skills:
 		skill.boosted = false
 

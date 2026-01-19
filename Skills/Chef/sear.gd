@@ -15,15 +15,23 @@ var boost_active = false
 @onready var particles: GPUParticles3D = $Particles
 @onready var active_timer: Timer = $ActiveTimer
 @onready var hurtbox: Area3D = $Hurtbox
+@onready var boost_particles: GPUParticles3D = $BoostParticles
+@onready var boost_hurtbox: Area3D = $BoostHurtbox
 
 
 func use():
 	if cooldown > 0.0:
 		return
-	particles.emitting = true
+	if boosted:
+		boost_particles.emitting = true
+		boost_active = true
+		revert_abilities.emit()
+	else:
+		particles.emitting = true
+
 	active_timer.start()
 	cooldown = INF
-	used.emit(true)
+	used.emit(true, true)
 	enabled = false
 	active = true
 
@@ -32,14 +40,20 @@ func _physics_process(delta: float) -> void:
 	cooldown -= delta
 	damage_cooldown -= delta
 	if active and damage_cooldown < 0.0:
-		for hitbox in hurtbox.get_overlapping_areas():
+		var target_hurtbox = boost_hurtbox if boost_active else hurtbox
+		var damage = 5 if boost_active else 2
+		for hitbox in target_hurtbox.get_overlapping_areas():
 			if hitbox.player_owner != player:
-				hitbox.hit(2)
+				hitbox.hit(damage)
 				damage_cooldown = damage_freqency
 
 
 func _on_active_timer_timeout() -> void:
-	particles.emitting = false
+	if boost_active:
+		boost_particles.emitting = false
+		boost_active = false
+	else:
+		particles.emitting = false
 	enabled = true
 	cooldown_started.emit()
 	cooldown = info.cooldown
