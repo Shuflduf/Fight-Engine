@@ -89,9 +89,12 @@ shape = SubResource("SeparationRayShape3D_qi0ee")
 transform = Transform3D(0, 0.99999994, -4.371139e-08, 0, -4.371138e-08, -1, -0.99999994, 0, -3.5527137e-15, 0.025000006, -0.6, 0.975)
 shape = SubResource("SeparationRayShape3D_qi0ee")
 
-[node name="ChefRig" parent="." index="7" unique_id=2092065129 node_paths=PackedStringArray("hand_handles") instance=ExtResource("2_sodo0")]
+[node name="ChefRig" parent="." index="7" unique_id=2092065129 node_paths=PackedStringArray("hand_anims") instance=ExtResource("2_sodo0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
-hand_handles = []
+hand_anims = {
+NodePath("RightArm"): &"throw_right",
+NodePath("LeftArm"): &"throw_left"
+}
 
 [node name="HUD" parent="." index="8" unique_id=545074785 instance=ExtResource("7_uejro")]
 

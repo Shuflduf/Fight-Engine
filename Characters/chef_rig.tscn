@@ -4,21 +4,208 @@
 [ext_resource type="Script" uid="uid://d03s6jlpks5ea" path="res://Characters/chef_rig.gd" id="2_cf1ap"]
 [ext_resource type="PackedScene" uid="uid://cdkf0ys4ox4lr" path="res://Characters/cleaver.tscn" id="4_oogy1"]
 
-[node name="ChefRig" unique_id=2092065129 node_paths=PackedStringArray("hand_handles", "skeleton") instance=ExtResource("1_8uqnm")]
+[sub_resource type="Animation" id="Animation_oogy1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Armature/Skeleton3D/Bone/LeftHand:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.001),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.554, 0.724, 0.652)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Armature/Skeleton3D/Bone/RightHand:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.554, 0.7236681, 0.652)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Armature/Skeleton3D/shoulder_R_003/CleaverParent/Cleaver:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Armature/Skeleton3D/shoulder_L_003/CleaverParent/Cleaver:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_jh11y"]
+resource_name = "throw_left"
+length = 0.9
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Armature/Skeleton3D/Bone/LeftHand:position")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.20000002, 0.3, 0.4, 0.5, 0.7, 0.79999995),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.554, 0.671, 1.13), Vector3(0.554, 0.671, 0.83), Vector3(0.554, 0.591, 0.702), Vector3(0.554, 0.549, 0.584), Vector3(0.554, 1.269, 0.014), Vector3(0.554, 0.932, -0.561), Vector3(0.554, 1.01, -0.493), Vector3(0.554, 0.724, 0.652)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Armature/Skeleton3D/shoulder_L_003/CleaverParent/Cleaver:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_0lu8w"]
+resource_name = "throw_right"
+length = 0.9
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Armature/Skeleton3D/Bone/RightHand:position")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(3.7252903e-08, 0.10000004, 0.20000005, 0.30000004, 0.40000004, 0.50000006, 0.70000005, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.554, 0.671, 1.13), Vector3(-0.554, 0.671, 0.83), Vector3(-0.554, 0.591, 0.702), Vector3(-0.554, 0.549, 0.584), Vector3(-0.554, 1.269, 0.014), Vector3(-0.554, 0.932, -0.561), Vector3(-0.554, 1.01, -0.493), Vector3(-0.554, 0.7236681, 0.652)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Armature/Skeleton3D/shoulder_R_003/CleaverParent/Cleaver:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_oogy1"]
+_data = {
+&"RESET": SubResource("Animation_oogy1"),
+&"throw_left": SubResource("Animation_jh11y"),
+&"throw_right": SubResource("Animation_0lu8w")
+}
+
+[sub_resource type="Gradient" id="Gradient_cf1ap"]
+offsets = PackedFloat32Array(0.15168539, 0.64044946, 1)
+colors = PackedColorArray(1, 0, 0, 1, 1, 0.4666667, 0, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_t112e"]
+gradient = SubResource("Gradient_cf1ap")
+
+[sub_resource type="Curve" id="Curve_oogy1"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.47549015, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_5itwv"]
+curve = SubResource("Curve_oogy1")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_jh11y"]
+lifetime_randomness = 1.0
+direction = Vector3(0, 0, -1)
+spread = 10.0
+initial_velocity_min = 20.0
+initial_velocity_max = 30.0
+gravity = Vector3(0, 10, 0)
+damping_min = 30.000002
+damping_max = 30.000002
+scale_min = 0.29999998
+scale_max = 0.7
+scale_curve = SubResource("CurveTexture_5itwv")
+color_ramp = SubResource("GradientTexture1D_t112e")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t112e"]
+shading_mode = 0
+vertex_color_use_as_albedo = true
+distance_fade_mode = 2
+distance_fade_min_distance = 0.1
+distance_fade_max_distance = 2.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_0lu8w"]
+material = SubResource("StandardMaterial3D_t112e")
+
+[sub_resource type="Gradient" id="Gradient_4n3s5"]
+offsets = PackedFloat32Array(0.09550562, 0.64044946, 1)
+colors = PackedColorArray(0, 0.06499994, 0.39, 1, 0, 0.75, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_5itwv"]
+gradient = SubResource("Gradient_4n3s5")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_fuwgj"]
+lifetime_randomness = 1.0
+direction = Vector3(0, 0, -1)
+spread = 10.0
+initial_velocity_min = 40.0
+initial_velocity_max = 60.0
+gravity = Vector3(0, 20, 0)
+damping_min = 30.000002
+damping_max = 30.000002
+scale_min = 0.39999998
+scale_curve = SubResource("CurveTexture_5itwv")
+color_ramp = SubResource("GradientTexture1D_5itwv")
+
+[node name="ChefRig" unique_id=2092065129 node_paths=PackedStringArray("hand_anims", "cleaver_parents", "skeleton") instance=ExtResource("1_8uqnm")]
 script = ExtResource("2_cf1ap")
-hand_handles = [NodePath("Armature/Skeleton3D/Bone/RightHand")]
+hand_anims = {
+NodePath("RightArm"): &"throw_right",
+NodePath("LeftArm"): &"throw_left"
+}
+cleaver_parents = {
+NodePath("RightArm"): NodePath("Armature/Skeleton3D/shoulder_R_003/CleaverParent"),
+NodePath("LeftArm"): NodePath("Armature/Skeleton3D/shoulder_L_003/CleaverParent")
+}
 skeleton = NodePath("Armature/Skeleton3D")
 
-[node name="Armature" parent="." index="1" unique_id=1049719058]
+[node name="RightArm" type="AnimationPlayer" parent="." index="0" unique_id=1315825708]
+libraries/ = SubResource("AnimationLibrary_oogy1")
+
+[node name="LeftArm" type="AnimationPlayer" parent="." index="1" unique_id=1846413279]
+libraries/ = SubResource("AnimationLibrary_oogy1")
+
+[node name="Armature" parent="." index="3" unique_id=1049719058]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0.87246644, 0)
 
 [node name="JacobianIK3D" type="JacobianIK3D" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(1593193233) index="0" unique_id=1333935107]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, -0.87246644, 0)
-active = false
 max_iterations = 100
 deterministic = true
-setting_count = 1
+setting_count = 2
 settings/0/target_node = NodePath("../Bone/RightHand")
+settings/1/target_node = NodePath("../Bone/LeftHand")
 settings/0/root_bone_name = "shoulder_R"
 settings/0/root_bone = 1
 settings/0/end_bone_name = "shoulder_R.003"
@@ -29,6 +216,16 @@ settings/0/joints/0/bone = 1
 settings/0/joints/1/bone = 2
 settings/0/joints/2/bone = 3
 settings/0/joints/3/bone = 4
+settings/1/root_bone_name = "shoulder_L"
+settings/1/root_bone = 5
+settings/1/end_bone_name = "shoulder_L.003"
+settings/1/end_bone = 8
+settings/1/extend_end_bone = false
+settings/1/joint_count = 4
+settings/1/joints/0/bone = 5
+settings/1/joints/1/bone = 6
+settings/1/joints/2/bone = 7
+settings/1/joints/3/bone = 8
 settings/0/joints/0/rotation_axis = 3
 settings/0/joints/0/limitation = null
 settings/0/joints/1/rotation_axis = 3
@@ -37,12 +234,51 @@ settings/0/joints/2/rotation_axis = 3
 settings/0/joints/2/limitation = null
 settings/0/joints/3/rotation_axis = 3
 settings/0/joints/3/limitation = null
+settings/1/joints/0/rotation_axis = 3
+settings/1/joints/0/limitation = null
+settings/1/joints/1/rotation_axis = 3
+settings/1/joints/1/limitation = null
+settings/1/joints/2/rotation_axis = 3
+settings/1/joints/2/limitation = null
+settings/1/joints/3/rotation_axis = 3
+settings/1/joints/3/limitation = null
 
-[node name="Cleaver" parent="Armature/Skeleton3D/shoulder_R_003" parent_id_path=PackedInt32Array(1398605683) index="2" unique_id=1685095157 instance=ExtResource("4_oogy1")]
-transform = Transform3D(-6.635102e-14, 1, -7.5896736e-07, 1.0000001, 3.1814245e-16, -8.742279e-08, -8.742278e-08, -7.5896736e-07, -1, 0.13264024, 0.2872529, 0.0701803)
+[node name="shoulder_R_003" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(1593193233) index="1" unique_id=1398605683]
+transform = Transform3D(0.37299567, 0.32644862, 0.8685076, 0.7934468, 0.3729916, -0.4809569, -0.48095372, 0.8685095, -0.11989519, -0.5581132, 0.7257959, 0.68094164)
 
-[node name="Cleaver" parent="Armature/Skeleton3D/shoulder_L_003" parent_id_path=PackedInt32Array(713617998) index="2" unique_id=1695446571 instance=ExtResource("4_oogy1")]
-transform = Transform3D(-4.3710813e-08, -1, -8.463903e-07, 1, -4.371138e-08, 6.7154474e-07, -6.715444e-07, -8.463903e-07, 1, -0.13226783, 0.26228082, 0.059546497)
+[node name="CleaverParent" type="Node3D" parent="Armature/Skeleton3D/shoulder_R_003" index="2" unique_id=563401164]
 
-[node name="RightHand" type="Marker3D" parent="Armature/Skeleton3D/Bone" parent_id_path=PackedInt32Array(577948154) index="0" unique_id=1028244744]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -0.18094546, 0.7268791, 0.66878676)
+[node name="Cleaver" parent="Armature/Skeleton3D/shoulder_R_003/CleaverParent" index="0" unique_id=1685095157 instance=ExtResource("4_oogy1")]
+transform = Transform3D(-5.9604645e-08, 0.9999999, -7.748604e-07, 1, 2.9802322e-08, -7.4505806e-08, -8.940697e-08, -7.636845e-07, -0.99999994, 0.1326403, 0.2872529, 0.0701803)
+
+[node name="shoulder_L_003" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(1593193233) index="2" unique_id=713617998]
+transform = Transform3D(0.37336826, -0.32646137, -0.86834276, -0.79303104, 0.37336233, -0.4813549, 0.48135015, 0.86834526, -0.11949214, 0.558106, 0.7261272, 0.680932)
+
+[node name="CleaverParent" type="Node3D" parent="Armature/Skeleton3D/shoulder_L_003" index="2" unique_id=1141032398]
+transform = Transform3D(2.0861626e-07, -1.0000001, -7.748604e-07, 1.0000001, 1.7881393e-07, 7.450581e-09, -7.450581e-09, -7.8976154e-07, 1, 1.3161227, -1.3849921, -0.02398336)
+
+[node name="Cleaver" parent="Armature/Skeleton3D/shoulder_L_003/CleaverParent" index="0" unique_id=1695446571 instance=ExtResource("4_oogy1")]
+transform = Transform3D(0.9999999, -2.0861626e-07, 6.482005e-07, 2.682209e-07, 0.9999999, 8.568168e-08, -6.556511e-07, -3.3527613e-08, 1, 1.6472726, 1.4483907, 0.08353126)
+
+[node name="Particles" type="GPUParticles3D" parent="Armature/Skeleton3D/Bone" parent_id_path=PackedInt32Array(577948154) index="0" unique_id=840224236]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 0.99999994, 0, 8.742278e-08, 0, -1, 0, 0.39999998, 0)
+emitting = false
+amount = 128
+lifetime = 0.4
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_jh11y")
+draw_pass_1 = SubResource("SphereMesh_0lu8w")
+
+[node name="BoostParticles" type="GPUParticles3D" parent="Armature/Skeleton3D/Bone" parent_id_path=PackedInt32Array(577948154) index="1" unique_id=452535272]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 0.99999994, 0, 8.742278e-08, 0, -1, 0, 0.39999998, 0)
+amount = 256
+lifetime = 0.4
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_fuwgj")
+draw_pass_1 = SubResource("SphereMesh_0lu8w")
+
+[node name="RightHand" type="Marker3D" parent="Armature/Skeleton3D/Bone" parent_id_path=PackedInt32Array(577948154) index="2" unique_id=1028244744]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.554, 0.7236681, 0.652)
+
+[node name="LeftHand" type="Marker3D" parent="Armature/Skeleton3D/Bone" parent_id_path=PackedInt32Array(577948154) index="3" unique_id=579853555]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0.554, 0.724, 0.652)

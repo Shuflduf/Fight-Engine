@@ -26,12 +26,14 @@ func use():
 		boost_particles.emitting = true
 		boost_active = true
 		revert_abilities.emit()
+		used.emit(true, true)
 	else:
 		particles.emitting = true
+		used.emit(true, false)
 
 	active_timer.start()
 	cooldown = INF
-	used.emit(true, true)
+
 	enabled = false
 	active = true
 
@@ -52,10 +54,12 @@ func _on_active_timer_timeout() -> void:
 	if boost_active:
 		boost_particles.emitting = false
 		boost_active = false
+		used.emit(false, true)
 	else:
 		particles.emitting = false
+		used.emit(false, false)
 	enabled = true
 	cooldown_started.emit()
 	cooldown = info.cooldown
-	used.emit(false)
+
 	active = false
